@@ -17,7 +17,6 @@ void union_d(int _a, int _b) {
     } else {
         p[a] = b;
     }
-    p[a] = b;
 }
     
 
