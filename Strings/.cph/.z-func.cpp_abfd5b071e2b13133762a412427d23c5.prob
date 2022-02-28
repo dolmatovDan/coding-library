@@ -1,0 +1,1 @@
+{"name":"Local: z-func","url":"d:\\C++\\Обучение\\Strings\\z-func.cpp","tests":[{"id":1644696677826,"input":"abacaba","output":"0 0 1 0 3 0 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++\\Обучение\\Strings\\z-func.cpp","group":"local","local":true}
