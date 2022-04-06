@@ -10,7 +10,7 @@ vector<string> split(string s, string sep = " ") {
     vector<int> z(n);
     z[0] = 0;
     int l = 0, r = 0;
-    for(int i = 1; i < n; ++i) {
+    for (int i = 1; i < n; ++i) {
         if (i <= r) z[i] = min(z[i - l], r - i + 1);
         while (i + z[i] < n and s[z[i]] == s[i + z[i]]) z[i]++;
         if (i + z[i] - 1 > r) {
@@ -19,7 +19,7 @@ vector<string> split(string s, string sep = " ") {
         }
     }
     string cur = "";
-    for(int i = len(term) + len(sep); i < len(s); ++i) {
+    for (int i = len(term) + len(sep); i < len(s); ++i) {
         if ((z[i] == len(sep) and len(cur))) {
             res.push_back(cur);
             cur = "";
@@ -39,9 +39,10 @@ signed main()
 
     string s, sep;
 
-    s = "shklhdfa asdfkhj  ffdsfasdfh hfdjhfs";
+    cin >> s;
 
     vector<string> res;
     res = split(s);
-    for(auto i: res) cout << i << ';';
+    for (auto i : res) cout << i << ';';
 }
+

@@ -11,7 +11,8 @@ void print_vector_int(vector<int> &A) {
 
 int main()
 {
-    const int64_t N = 100000000000000;
+    const int64_t N = 1e9;
+    freopen("output.txt", "w", stdout);
     vector<bool> is_prime(N + 1);
     for (int64_t i = 0; i < N + 1; i ++) {
         is_prime[i] = true;
@@ -25,7 +26,7 @@ int main()
         }
     }
     int res = 0;
-    for (int64_t i = 1000000000000; i <= N; i++) {
+    for (int64_t i = 3; i <= N; i++) {
         if (is_prime[i]) {
             cout << i << ", ";
             res++;
