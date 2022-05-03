@@ -4,7 +4,7 @@ const int inf = 2e9;
 mt19937 rnd(time(0));
 #define F first 
 #define S second
- 
+// in split: left < k, right >= k
 struct node{
     int x, y;
     node *left, *right;
