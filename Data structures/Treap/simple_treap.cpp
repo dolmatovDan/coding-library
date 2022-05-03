@@ -93,5 +93,6 @@ int prev(node *root, int x){
 
 signed main()
 {
+    node* root = new node(0);
     return 0;  
 }
