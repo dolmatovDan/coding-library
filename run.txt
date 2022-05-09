@@ -1,0 +1,1 @@
+Doskey run= g++ -std=c++17 -Wshadow -Wall -O2 -Wno-unused-result $*
