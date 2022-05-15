@@ -10,7 +10,7 @@ struct segtree {
     vector<node> tree;
     int size;
     ll NO_OP = -infll;
-    ll NEUTRAL = infll;
+    ll NEUTRAL = 0;
     void init(int n) {
         size = 1;
         while(size < n) size *= 2;
@@ -18,31 +18,31 @@ struct segtree {
     }
     ll op_modify(ll a, ll b, int len) {
         if (b == NO_OP) return a;
-        return b;
+        return b * len;
     }
     ll op_sum(ll a, ll b) {
-        return min(a, b);
+        return a + b;
     }
     void propagate(int x, int lx, int rx) {
         if (tree[x].set == NO_OP or rx - lx == 1) return;
         int m = (lx + rx) / 2;
-        tree[x * 2 + 1].set = op_modify(tree[x * 2 + 1].set, tree[x].set, m - lx);
+        tree[x * 2 + 1].set = op_modify(tree[x * 2 + 1].set, tree[x].set, 1);
         tree[x * 2 + 1].min = op_modify(tree[2 * x + 1].min, tree[x * 2 + 1].set, m - lx);
 
-        tree[x * 2 + 2].set = op_modify(tree[x * 2 + 2].set, tree[x].set, rx - m);
+        tree[x * 2 + 2].set = op_modify(tree[x * 2 + 2].set, tree[x].set, 1);
         tree[x * 2 + 2].min = op_modify(tree[2 * x + 2].min, tree[x * 2 + 1].set, rx - m);
         tree[x].set = NO_OP;
     }
 
     void mult(int l, int r, int v, int x, int lx, int rx) {
         propagate(x, lx, rx);
-        int m = (lx + rx) / 2;
         if (l >= rx or lx >= r) return;
         if (lx >= l and rx <= r) {
-            tree[x].set = op_modify(tree[x].set, v, m - lx);
-            tree[x].min = op_modify(tree[x].min, tree[x].set, m - lx);
+            tree[x].set = op_modify(tree[x].set, v, 1);
+            tree[x].min = op_modify(tree[x].min, tree[x].set, rx - lx);
             return;
         }
+        int m = (lx + rx) / 2;
         mult(l, r, v, x * 2 + 1, lx, m);
         mult(l, r, v, x * 2 + 2, m, rx);
         tree[x].min = op_sum(tree[x * 2 + 1].min, tree[x * 2 + 2].min);
