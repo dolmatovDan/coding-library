@@ -1,65 +1,95 @@
 #include <bits/stdc++.h>
-//Дерево на полуинтервалах 
 using namespace std;
-#define len(a) (int)(a.size())
-typedef vector<int> vi;
+typedef long long ll;
+#define deb(a) cout << #a << ' ' << a << '\n'
 
-int n;
-vi t;
-vi a;
-
-void build(int l, int r, int v) {
-    if (l + 1 == r) {
-        t[v] = a[l];
-    } else {
-        int tm = (l + r) / 2;
-        build(l, tm, 2 * v + 1);
-        build(tm, r, 2 * v + 2);
-        t[v] = t[v * 2 + 1] + t[v * 2 + 2];
+struct segtree {
+    vector<ll> tree;
+    int size = 1;
+    void init(int n) {
+        size = 1;
+        while(size < n) size *= 2;
+        tree.assign(2 * size, 0);
     }
-}
-
-int sum(int l, int r, int v = 0, int tl = 0, int tr = n) {
-    if (tl >= l && tr <= r) {
-        return t[v];
+    void build(vector<int> &a, int x, int lx, int rx) {
+        if (rx - lx == 1) {
+            if (lx < a.size()) tree[x] = a[lx];
+            return;
+        }
+        int m = (lx + rx) / 2;
+        build(a, x * 2 + 1, lx, m);
+        build(a, x * 2 + 2, m, rx);
+        tree[x] = tree[x * 2 + 1] + tree[x * 2 + 2];
     }
-    if (tr <= l || r <= tl) {
-        return 0;
+
+    void build(vector<int> &a) {
+        init(a.size());
+        build(a, 0, 0, size);
     }
-    int mid = (tr + tl) / 2; // mid = l + (r - l) / 2;
-    return sum(l, r, 2 * v + 1, tl, mid) + sum(l, r, 2 * v + 2, mid, tr);
-}
 
-void update (int pos, int new_val, int v = 0, int tl = 0, int tr = n) {
-	if (tl + 1 == tr)
-		t[v] = new_val;
-	else {
-		int tm = (tl + tr) / 2;
-		if (pos < tm) update (pos, new_val, v * 2 + 1, tl, tm);
-		else update (pos, new_val, v * 2 + 2, tm, tr);
-		t[v] = t[v * 2 + 1] + t[v * 2 + 2];
-	}
-}
+    void set(int i, int v, int x, int lx, int rx) {
+        if (rx - lx == 1) {
+            tree[x] = v;
+            return;
+        }
+        int m = (lx + rx) / 2;
+        if (i < m) set(i, v, x * 2 + 1, lx, m);
+        else set(i, v, x * 2 + 2, m, rx);
+        tree[x] = tree[2 * x + 1] + tree[2 * x + 2];
+    }
+    void set(int i, int v) {
+        set(i, v, 0, 0, size);
+    }
+    ll sum(int l, int r, int x, int lx, int rx) {
+        if (l >= rx || lx >= r) {
+            return 0;
+        }
+        if (lx >= l && rx <= r) {
+            return tree[x];
+        }
+        int m = (lx + rx) / 2;
+        ll s1 = sum(l, r, x * 2 + 1, lx, m);
+        ll s2 = sum(l, r, x * 2 + 2, m, rx);
+        return s1 + s2;
+    }
+    ll sum(int l, int r) {
+        return sum(l, r, 0, 0, size);
+    }
 
-int solve() {
-    cin >> n;
-    t.resize(4 * n + 1);
-    return 0;
-}
+    void print() {
+        for(int i = 0;i < tree.size();++i) cout << tree[i] << ' ';
+        cout << '\n';
+    }
+};
 
 
-signed main()
-{
-    ios::sync_with_stdio(0);
+
+int main() {
+    ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    int t = 1;
-    //cin >> t;
-    while(t--) {
-        solve();
+    int n,m;
+    cin >> n >> m;
+    vector<int> a(n);
+    for(int &x:a) cin >> x;
+    segtree st;
+
+    st.build(a);
+    while(m--) {
+        int com;
+        cin >> com;
+        if (com == 1) {
+            int i, v;
+            cin >> i >> v;
+            st.set(i, v);
+        } else {
+            int l, r;
+            cin >> l >> r;
+            ll res = st.sum(l, r);
+            cout << res << '\n';
+        }
+
     }
+
+    return 0;
 }
-/*
-5
-6 8 9 3 2
-*/
