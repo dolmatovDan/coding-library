@@ -36,13 +36,6 @@ vector<string> split(string s, string sep = " ") {
 
 signed main()
 {
-
-    string s, sep;
-
-    cin >> s;
-
-    vector<string> res;
-    res = split(s);
-    for (auto i : res) cout << i << ';';
+    return 0;
 }
 
