@@ -2,10 +2,10 @@
 using namespace std;
 
 void hanoi(int n, int start, int finish) {
-    if (n == 1) { //Крайний случай
+    if (n == 1) { 
         cout << n << " from " << start << " to " << finish << endl;
-    } else { //Рекурентный случай
-        int tmp = 6 - start - finish; // Вычисляем временный столбец, сумма всех 1 + 2 + 3 = 6
+    } else { 
+        int tmp = 6 - start - finish;
         hanoi(n - 1, start, tmp);
         cout << n << " from " << start << " to " << finish << endl;
         hanoi(n - 1, tmp, finish);
