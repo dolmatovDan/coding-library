@@ -1,37 +1,24 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
-
-void print_vector_int(vector<int> &A) {
-    for (int i = 0; i < A.size(); i++) {
-        cout << A[i] << '\t';
+vector<int> sieve(int n) {
+    vector<bool> sieve(n + 1, true);
+    sieve[1] = false;
+    for(int i = 2;i * i <= n;++i) {
+        if (sieve[i]) {
+            for(int j = i * i;j <= n;j+=i) {
+                sieve[j] = false;
+            }
+        }
     }
+    vector<int> res;
+    for(int i = 1;i <= n;++i) {
+        if (sieve[i]) res.push_back(i);
+    }
+    return res;
 }
 
 int main()
 {
-    const int64_t N = 1e9;
-    freopen("output.txt", "w", stdout);
-    vector<bool> is_prime(N + 1);
-    for (int64_t i = 0; i < N + 1; i ++) {
-        is_prime[i] = true;
-    }
-
-    for (int64_t  x = 2; x * x <= N; x++) { //��������� �� �����
-        if (is_prime[x]) { //��������� ������ ��� �������
-            for (int64_t y = x * x; y <= N; y += x) { // ��������� ������� � �������� x
-                is_prime[y] = false;
-            }
-        }
-    }
-    int res = 0;
-    for (int64_t i = 3; i <= N; i++) {
-        if (is_prime[i]) {
-            cout << i << ", ";
-            res++;
-        }
-    }
-    cout << res << endl;
     return 0;
 }
