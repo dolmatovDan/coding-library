@@ -21,11 +21,12 @@ struct dsu {
     void join(int _a, int _b) {
         int a = get(_a);
         int b = get(_b);
-        if (r[a] == r[b]) r[a]++;
         if (r[a] > r[b]) {
-            p[b] = a;
-        } else {
-            p[a] = b;
+            swap(a, b);
+        }
+        p[a] = b;
+        if (r[a] == r[b]) {
+            r[b]++;
         }
     }
 };
