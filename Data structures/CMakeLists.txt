@@ -4,4 +4,4 @@ project(Data_structures)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Data_structures
-        DSU.cpp)
+        fenvick_tree.cpp)

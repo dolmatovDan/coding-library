@@ -49,8 +49,8 @@ cmake_ninja_workdir = D$:/C++/Learning/GitHub/Data$ structures/cmake-build-debug
 
 build cmake_object_order_depends_target_Data_structures: phony || CMakeFiles/Data_structures.dir
 
-build CMakeFiles/Data_structures.dir/DSU.cpp.obj: CXX_COMPILER__Data_structures_Debug D$:/C++/Learning/GitHub/Data$ structures/DSU.cpp || cmake_object_order_depends_target_Data_structures
-  DEP_FILE = CMakeFiles\Data_structures.dir\DSU.cpp.obj.d
+build CMakeFiles/Data_structures.dir/fenvick_tree.cpp.obj: CXX_COMPILER__Data_structures_Debug D$:/C++/Learning/GitHub/Data$ structures/fenvick_tree.cpp || cmake_object_order_depends_target_Data_structures
+  DEP_FILE = CMakeFiles\Data_structures.dir\fenvick_tree.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\Data_structures.dir
   OBJECT_FILE_DIR = CMakeFiles\Data_structures.dir
@@ -63,7 +63,7 @@ build CMakeFiles/Data_structures.dir/DSU.cpp.obj: CXX_COMPILER__Data_structures_
 #############################################
 # Link the executable Data_structures.exe
 
-build Data_structures.exe: CXX_EXECUTABLE_LINKER__Data_structures_Debug CMakeFiles/Data_structures.dir/DSU.cpp.obj
+build Data_structures.exe: CXX_EXECUTABLE_LINKER__Data_structures_Debug CMakeFiles/Data_structures.dir/fenvick_tree.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Data_structures.dir
