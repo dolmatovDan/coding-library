@@ -7,21 +7,20 @@ using namespace std;
 #define F first
 #define S second
 #define MP make_pair
-#define pii pair<int, int>
 #define sz(a) ((int)((a).size()))
 typedef long long ll;
 typedef long double ld;
 const ll MOD = 1000000007;
 const ll MAX = LLONG_MAX;
 
-vector<pii> path;
-vector<vector<pii>> g;
+vector<pair<int, int>> path;
+vector<vector<pair<int, int>>> g;
 vector<int> first;
 vector<bool> vis;
 
 void euler(int v) {
     while(first[v] < sz(g[v])) {
-        pii p = g[v][first[v]];
+        pair<int, int> p = g[v][first[v]];
         first[v]++;
         int i = p.F;
         int u = p.S;
@@ -32,7 +31,6 @@ void euler(int v) {
         }
     }
 }
-
 
 int solve() {
     int n, m;
@@ -49,9 +47,8 @@ int solve() {
     }
     euler(0);
     cout << "-------" << endl;
-    for(int i = 0; i < sz(path); i++) cout << path[i].F + 1 << ' ' << path[i].S + 1<< endl;
-
-
+    for (int i = 0; i < sz(path); i++) 
+        cout << path[i].F + 1 << ' ' << path[i].S + 1<< endl;
     return 0;
 }
 

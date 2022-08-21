@@ -6,8 +6,8 @@ typedef long double ld;
 struct line {
     ld k;
     ld b;
-    ld get(ld x) {
-        return x * k + b;
+    ld operator() (ld x) {
+        return k * x + b;
     }
 };
 vector<line> sortedLines(vector<line> k) {
@@ -56,7 +56,7 @@ struct CHT {
             int mid = (r + l) / 2;
             (st[mid].S.x1 <= x ? l : r) = mid;
         }
-        return st[l].F.get(x);
+        return st[l].F(x);
     }
 };
 

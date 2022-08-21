@@ -6,8 +6,6 @@ using namespace std;
 #define all(a) a.begin(), a.end()
 #define F first
 #define S second
-#define MP make_pair
-#define pii pair<int, int>
 #define sz(a) ((int)((a).size()))
 typedef long long ll;
 typedef long double ld;
@@ -19,7 +17,7 @@ vector<int> in;
 vector<bool> mark;
 vector<vector<int>> g;
 int t = 0;
-vector<pii> bridges;
+vector<pair<int, int>> bridges;
 
 void dfs(int v, int p) {
     up[v] = in[v] = t++;
@@ -33,11 +31,10 @@ void dfs(int v, int p) {
         } else {
             dfs(u, v);
             up[v] = min(up[u], up[v]);
-
         }
     }
     if (up[v] >= in[v] and p != -1) {
-        bridges.push_back(MP(min(v, p) + 1, max(v, p) + 1));
+        bridges.push_back(make_pair(min(v, p) + 1, max(v, p) + 1));
     }
 }
 
