@@ -1,3 +1,0 @@
-D:/C++/Learning/GitHub/Strings/cmake-build-debug/CMakeFiles/Strings.dir
-D:/C++/Learning/GitHub/Strings/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/C++/Learning/GitHub/Strings/cmake-build-debug/CMakeFiles/rebuild_cache.dir

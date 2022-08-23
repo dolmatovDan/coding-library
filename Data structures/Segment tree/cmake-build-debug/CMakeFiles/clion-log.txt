@@ -1,4 +1,0 @@
-"D:\Programs\CLion 2021.3.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/Programs/CLion 2021.3.4/bin/ninja/win/ninja.exe" -G Ninja "D:\C++\Learning\GitHub\Data structures\Segment tree"
--- Configuring done
--- Generating done
--- Build files have been written to: D:/C++/Learning/GitHub/Data structures/Segment tree/cmake-build-debug
