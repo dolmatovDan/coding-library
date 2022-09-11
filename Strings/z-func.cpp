@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define len(a) (int)(a.size())
 
 vector<int> z_func(string s) {
-    int n = len(s);
+    int n = (int)s.size();
     vector<int> z(n);
     z[0] = 0;
     int l = 0, r = 0;

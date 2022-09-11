@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long double ld;
-#define F first
-#define S second
 struct line {
     ld k;
     ld b;
@@ -38,12 +36,12 @@ struct CHT {
         st.emplace_back(k[0], seg(-inf, inf));
          for(int i = 1;i < (int)k.size();++i) {
             while((int)st.size()) {
-                ld xx = cross(st.back().F, k[i]);
-                if (xx < st.back().S.x1) {
+                ld xx = cross(st.back().first, k[i]);
+                if (xx < st.back().second.x1) {
                     st.pop_back();
                     continue;
                 }
-                st.back().S.x2 = xx;
+                st.back().second.x2 = xx;
                 st.emplace_back(k[i], seg(xx, inf));
                 break;
             }
@@ -54,9 +52,9 @@ struct CHT {
         int r = (int)st.size();
         while(r > l + 1) {
             int mid = (r + l) / 2;
-            (st[mid].S.x1 <= x ? l : r) = mid;
+            (st[mid].second.x1 <= x ? l : r) = mid;
         }
-        return st[l].F(x);
+        return st[l].first(x);
     }
 };
 

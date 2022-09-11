@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long // Можо, чтобы не думать
+#define int long long // Можно, чтобы не думать
 
 
 const int MOD = 1000000007;

@@ -2,16 +2,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-//#define int long long
-#define all(a) a.begin(), a.end()
-#define F first
-#define S second
-#define MP make_pair
-#define pii pair<int, int>
-#define sz(a) ((int)((a).size()))
-typedef long long ll;
-typedef long double ld;
-const ll MOD = 1000000007;
+#define sz(a) (int)a.size()
 
 vector<int> used;
 vector<vector<int>> g;
@@ -60,7 +51,7 @@ int solve() {
     for(int i = 0; i < n; i++) {
         if(dfs(i)) {
             cout << "YES" << endl;
-            for(int i = 0; i < sz(ans); i++) cout << ans[i] + 1 << ' ';
+            for(int j = 0; j < sz(ans); j++) cout << ans[j] + 1 << ' ';
             return 0;
         }
     }

@@ -14,8 +14,6 @@ void gen_permutations(int length,
         cout << endl;
     } else {
         for (int k = 0; k < length; k++) {
-            // Перед углублением в рекурсию проверяем,
-            // что число k ранее не использовалось в данной перестановке
             if (find(permutation.begin(),
                      permutation.end(), k) == permutation.end()) {
                 permutation.push_back(k);

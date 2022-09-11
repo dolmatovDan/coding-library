@@ -2,15 +2,9 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-//#define int long long
-#define all(a) a.begin(), a.end()
-#define F first
-#define S second
 #define sz(a) ((int)((a).size()))
 typedef long long ll;
 typedef long double ld;
-const ll MOD = 1000000007;
-const ll MAX = LLONG_MAX;
 
 vector<int> up;
 vector<int> in;
@@ -62,7 +56,7 @@ int solve() {
         g[v].push_back(u);
     }
     find_bridges(n);
-    for(int i = 0; i < sz(bridges); i++) cout << bridges[i].F << ' ' << bridges[i].S << endl;
+    for(int i = 0; i < sz(bridges); i++) cout << bridges[i].first << ' ' << bridges[i].second << endl;
     return 0;
 }
 

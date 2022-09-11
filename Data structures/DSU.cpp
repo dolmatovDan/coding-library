@@ -7,7 +7,7 @@ struct dsu {
     void init(int n) {
         size = n;
         p.assign(n, 0);
-        iota(all(p), 0);
+        iota(p.begin(), p.end(), 0);
         r.assign(n, 1);
     }
     int get(int a) {

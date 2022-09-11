@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define len(a) (int)(a.size())
 
 vector<int> pref_func(string s) {
-    int n = len(s);
+    int n = (int)s.size();
     vector<int> p(n);
     for(int i = 1;i < n;++i){
         int j = p[i - 1];

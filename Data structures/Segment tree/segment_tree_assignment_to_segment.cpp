@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-const ll infll = 2e9;
+const ll INF64 = 2e9;
 struct segtree {
     vector<int> tree;
-    ll NO_OPER = -infll;
+    ll NO_OPER = -INF64;
     int size = 1;
     void init(int n) {
         while(size < n) size *= 2;

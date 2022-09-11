@@ -1,9 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define all(a) a.begin(), a.end()
 #define len(a) ((int)(a.size()))
-#define F first
-#define S second
 
 typedef long long ll;
 typedef long double ld;

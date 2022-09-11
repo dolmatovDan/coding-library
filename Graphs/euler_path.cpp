@@ -2,33 +2,27 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-//#define int long long
-#define all(a) a.begin(), a.end()
-#define F first
-#define S second
-#define MP make_pair
-#define pii pair<int, int>
 #define sz(a) ((int)((a).size()))
 typedef long long ll;
 typedef long double ld;
 const ll MOD = 1000000007;
 const ll MAX = LLONG_MAX;
 
-vector<vector<pii>> g;
+vector<vector<pair<int, int>>> g;
 vector<bool> vis;
 vector<int> first;
-vector<pii> path;
+vector<pair<int, int>> path;
 
 void euler(int v) {
     while(first[v] < sz(g[v])) {
-        pii p = g[v][first[v]];
+        pair<int, int> p = g[v][first[v]];
         first[v]++;
-        int i = p.F;
-        int u = p.S;
+        int i = p.first;
+        int u = p.second;
         if (not vis[i]) {
             vis[i] = true;
             euler(u);
-            path.push_back(MP(u, v));
+            path.push_back(make_pair(u, v));
         }
     }
 }
@@ -46,8 +40,8 @@ int solve() {
         int u, v;
         cin >> u >> v;
         u--, v--;
-        g[u].push_back(MP(i, v));
-        g[v].push_back(MP(i, u));
+        g[u].push_back(make_pair(i, v));
+        g[v].push_back(make_pair(i, u));
     }
     for(int i = 0; i < n; i++) {
         if (sz(g[i]) % 2 == 1) {
@@ -62,15 +56,15 @@ int solve() {
         }
     }
     int k = n;
-    g[k].push_back(MP(m, x));
-    g[x].push_back(MP(m, k));
+    g[k].push_back(make_pair(m, x));
+    g[x].push_back(make_pair(m, k));
 
-    g[k].push_back(MP(m + 1, y));
-    g[y].push_back(MP(m + 1, k));
+    g[k].push_back(make_pair(m + 1, y));
+    g[y].push_back(make_pair(m + 1, k));
     euler(k);
     cout << "----------" << endl;
 
-    for(int i = 1; i < sz(path) - 1; i++) cout << path[i].F + 1<< ' ' << path[i].S + 1 << endl;
+    for(int i = 1; i < sz(path) - 1; i++) cout << path[i].first + 1<< ' ' << path[i].second + 1 << endl;
 
     return 0;
 }

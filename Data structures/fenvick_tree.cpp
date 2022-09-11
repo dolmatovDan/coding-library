@@ -1,13 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define len(a) ((int)(a).size())
 typedef long long ll;
 //sum [l; r)
 struct fenvick {
     int n;
     vector<ll> f;
     void init (vector<int> &a) {
-        n = len(a);
+        n = (int)a.size();
         f.resize(n);
         f[0] = a[0];
         for (int i = 1; i < n; i++) f[i] = f[i - 1] + a[i];

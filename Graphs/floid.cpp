@@ -1,18 +1,6 @@
-#include <iostream>
 #include <bits/stdc++.h>
 
 using namespace std;
-//#define int long long
-#define all(a) a.begin(), a.end()
-#define F first
-#define S second
-#define MP make_pair
-#define pii pair<int, int>
-#define sz(a) ((int)((a).size()))
-typedef long long ll;
-typedef long double ld;
-const ll MOD = 1000000007;
-const ll MAX = 10000;
 
 int solve() {
     int n;

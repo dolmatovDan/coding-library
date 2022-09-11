@@ -2,11 +2,6 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-//#define int long long
-#define all(a) a.begin(), a.end()
-#define F first
-#define S second
-#define MP make_pair
 #define sz(a) ((int)((a).size()))
 typedef long long ll;
 typedef long double ld;
@@ -22,12 +17,12 @@ void euler(int v) {
     while(first[v] < sz(g[v])) {
         pair<int, int> p = g[v][first[v]];
         first[v]++;
-        int i = p.F;
-        int u = p.S;
+        int i = p.first;
+        int u = p.second;
         if (not vis[i]) {
             vis[i] = true;
             euler(u);
-            path.push_back(MP(u, v));
+            path.push_back(make_pair(u, v));
         }
     }
 }
@@ -42,13 +37,13 @@ int solve() {
         int u, v;
         cin >> u >> v;
         u--, v--;
-        g[u].push_back(MP(i, v));
-        g[v].push_back(MP(i, u));
+        g[u].push_back(make_pair(i, v));
+        g[v].push_back(make_pair(i, u));
     }
     euler(0);
     cout << "-------" << endl;
     for (int i = 0; i < sz(path); i++) 
-        cout << path[i].F + 1 << ' ' << path[i].S + 1<< endl;
+        cout << path[i].first + 1 << ' ' << path[i].second + 1<< endl;
     return 0;
 }
 

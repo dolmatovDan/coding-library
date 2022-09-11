@@ -2,8 +2,7 @@
 using namespace std;
 const int inf = 2e9;
 mt19937 rnd(time(0));
-#define F first 
-#define S second
+#define second second
 // in split: left < k, right >= k
 struct node{
     int x, y;
@@ -37,12 +36,12 @@ pair<node*, node*> split(node *root, int x){
     }
     if(root->x >= x){
         auto res = split(root->left, x);
-        root->left = res.S;
-        return {res.F, root};
+        root->left = res.second;
+        return {res.first, root};
     }
     auto res = split(root->right, x);
-    root->right = res.F;
-    return {root, res.S};
+    root->right = res.first;
+    return {root, res.second};
 }
  
 bool exists(node* a, int k) {
@@ -56,13 +55,13 @@ node *insert(node *root, int x){
     if (exists(root,x)) return root;
     auto trees = split(root, x);
     node *nw = new node(x);
-    return merge(trees.F, merge(nw, trees.S));
+    return merge(trees.first, merge(nw, trees.second));
 }
  
 node *erase(node *root, int x){
     auto trees = split(root, x);
-    trees.S = split(trees.S, x + 1).S;
-    return merge(trees.F, trees.S);
+    trees.second = split(trees.second, x + 1).second;
+    return merge(trees.first, trees.second);
 }
  
 int get_min(node* a) {
@@ -79,15 +78,15 @@ int get_max(node *a){
  
 int next(node *root, int x){
     auto trees = split(root, x + 1);
-    int res = get_min(trees.S);
-    merge(trees.F, trees.S);
+    int res = get_min(trees.second);
+    merge(trees.first, trees.second);
     return res;
 }
  
 int prev(node *root, int x){
     auto trees = split(root, x);
-    int res = get_max(trees.F);
-    merge(trees.F, trees.S);
+    int res = get_max(trees.first);
+    merge(trees.first, trees.second);
     return res;
 }
 

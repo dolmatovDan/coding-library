@@ -2,32 +2,25 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-#define int long long
-#define all(a) a.begin(), a.end()
-#define F first
-#define S second
-#define MP make_pair
-#define pii pair<int, int>
 #define sz(a) ((int)((a).size()))
 typedef long long ll;
 typedef long double ld;
-const ll MOD = 1000000007;
-const int MAX = 1000000000000 * 2;
+const int MAX = 2e8;
 
-int dejkstra(vector<vector<pii>> g, int start, int finish) {
+int dejkstra(vector<vector<pair<int, int>>> g, int start, int finish) {
     int n = sz(g);
-    set<pii> s;
-    s.insert(MP(0, start));
+    set<pair<int, int>> s;
+    s.insert(make_pair(0, start));
     vector<int> d(n, MAX);
     d[start] = 0;
     while (not s.empty()) {
-        int mn = (*s.begin()).S;
+        int mn = (*s.begin()).second;
         s.erase(*s.begin());
-        for(pii e: g[mn]) {
-            if (d[e.F] > d[mn] + e.S) {
-                s.erase(MP(d[e.F], e.F));
-                d[e.F] = d[mn] + e.S;
-                s.insert(MP(d[e.F], e.F));
+        for(pair<int, int> e: g[mn]) {
+            if (d[e.first] > d[mn] + e.second) {
+                s.erase(make_pair(d[e.first], e.first));
+                d[e.first] = d[mn] + e.second;
+                s.insert(make_pair(d[e.first], e.first));
             }
         }
     }
@@ -39,13 +32,13 @@ int solve() {
     int n, start, finish;
     cin >> n >> start >> finish;
     start--, finish--;
-    vector<vector<pii>> g(n);
+    vector<vector<pair<int, int>>> g(n);
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
             int x;
             cin >> x;
             if (x != -1 and x != 0) {
-                g[i].push_back(MP(j, x));
+                g[i].push_back(make_pair(j, x));
             }
         }
     }

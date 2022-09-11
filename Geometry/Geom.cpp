@@ -2,8 +2,6 @@
 using namespace std;
 #define all(a) (a).begin(), (a).end()
 #define len(a) ((int)((a).size()))
-#define F first
-#define S second
 
 typedef long long ll;
 typedef long double ld;
@@ -221,18 +219,18 @@ vector<int> buildConvexHull(vector<Vector> polygon) {
         polygon2[i] = {polygon[i] - left, i};
     }
     sort(all(polygon2), [&](pair<Vector, int> p1, pair<Vector, int> p2) {
-        return p1.F % p2.F > 0 || (p1.F % p2.F == 0 && getDist(Vector(0, 0), p1.F) < getDist(Vector(0, 0), p2.F));
+        return p1.first % p2.first > 0 || (p1.first % p2.first == 0 && getDist(Vector(0, 0), p1.first) < getDist(Vector(0, 0), p2.first));
     });
     vector<int> res;
     vector<pair<Vector, int>> st;
     for (int i = 0; i < n; ++i) {
-        while (len(st) >= 2 && (polygon2[i].F - st.back().F) % (st[len(st) - 2].F - st.back().F) <= 0) {
+        while (len(st) >= 2 && (polygon2[i].first - st.back().first) % (st[len(st) - 2].first - st.back().first) <= 0) {
             st.pop_back();
         }
         st.push_back(polygon2[i]);
     }
     for (auto x : st) {
-        res.push_back(x.S);
+        res.push_back(x.second);
     }
     return res;
 }

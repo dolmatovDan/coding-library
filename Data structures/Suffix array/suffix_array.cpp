@@ -1,7 +1,4 @@
 #include <bits/stdc++.h>
-#define all(a) (a).begin(), (a).end()
-#define F first
-#define S second
 using namespace std;
 
 void count_sort(vector<int> &p, vector<int>& c) {
@@ -29,12 +26,12 @@ vector<int> suf_array(string s) {
         vector<pair<char, int>> a(n);
         for(int i = 0;i < n;++i)
             a[i] = {s[i], i};
-        sort(all(a));
+        sort(a.begin(), a.end());
         for(int i = 0;i < n;++i)
-            p[i] = a[i].S;
+            p[i] = a[i].second;
         c[p[0]] = 0;
         for(int i = 1;i < n;++i) {
-            if (a[i].F == a[i - 1].F) {
+            if (a[i].first == a[i - 1].first) {
                 c[p[i]] = c[p[i - 1]];
             } else {
                 c[p[i]] = c[p[i - 1]] + 1;

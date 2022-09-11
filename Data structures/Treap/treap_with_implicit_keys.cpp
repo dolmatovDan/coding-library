@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define F first
-#define S second
 mt19937 rnd(time(0));
 
 struct node
@@ -49,14 +47,14 @@ pair<node*, node*> split(node *root, int k){
     int key = get_sz(root->left);
     if (key >= k) {
         auto e = split(root->left, k);
-        root->left = e.S;
+        root->left = e.second;
         recalc(root);
-        return {e.F, root};
+        return {e.first, root};
     }
     auto e = split(root->right, k - key - 1);
-    root->right = e.F;
+    root->right = e.first;
     recalc(root);
-    return {root, e.S};
+    return {root, e.second};
 }
  
 void print(node* root) {
