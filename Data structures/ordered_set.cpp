@@ -1,17 +1,17 @@
 /* First you need to clear numbers in extension of the file in resize_policy*/
 
-#include<bits/stdc++.h>
-
-#include<ext/pb_ds/assoc_container.hpp>
-#include<ext/pb_ds/tree_policy.hpp>
-
+#include <bits/stdc++.h>
 using namespace std;
+
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
 using namespace __gnu_pbds;
 
-typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds; // find_by_order, order_of_key
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set; // find_by_order, order_of_key
 
 int main() {
-	pbds A; // declaration
+	ordered_set A; // declaration
 
 	// Inserting elements - 1st query
 	A.insert(1);
