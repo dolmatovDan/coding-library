@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <sstream>
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> input_vector() {
@@ -9,7 +6,7 @@ vector<int> input_vector() {
     string line;
     getline(cin, line);
     stringstream line_stream(line);
-    while(not line_stream.eof()) { //«аписываем пока строка потока не кончитс€
+    while(not line_stream.eof()) {
         int x;
         line_stream >> x;
         A.push_back(x);
